@@ -1,0 +1,19 @@
+bundle:
+  name: simple_chatbot
+
+resources:
+  apps:
+    simple_chatbot:
+      name: agent-${workspace.current_user.id}-${bundle.target}
+      description: "Simple chatbot agent"
+      source_code_path: ./
+      resources:
+        - name: serving-endpoint
+          serving_endpoint:
+            name: "databricks-claude-sonnet-5"
+            permission: CAN_QUERY
+
+targets:
+  dev:
+    mode: development
+    default: true
